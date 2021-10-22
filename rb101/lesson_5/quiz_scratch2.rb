@@ -44,7 +44,8 @@ all_orders = customer_orders.map do |customer|
 end
 # end result of this loop is that all_orders contains an array of hashes holding 
 # our customer IDs and customer names
-# this will just throw an error since we're using reduce wrong. 
+# reduce returns an object formed by a block to which each value is passed.
+# so the reduce statement gets us our total
 customer_orders.each_with_index do |data, index|
   order_value = data[:orders].reduce(0) do |total, order|
     total + order[:order_value]
@@ -52,10 +53,12 @@ customer_orders.each_with_index do |data, index|
 
   all_orders[index][:total_order_value] = order_value
 end
+# this will work. we can assume that hte index of all_orders and customer_orders are the same
+# for each customer because all_orders was build from customer_orders. 
 
 # 2 
-# inject and reduce are the same thing, so this will also give us an error when we call
-# inject with 0 as an argument.
+# inject and reduce are the same thing, so this gives us the correct total.
+# this should work also. returns a hash with all the proper values. 
 all_orders = customer_orders.map do |customer_data|
   order_value = customer_data[:orders].inject(0) do |total, order_data|
     total + order_data[:order_value]
