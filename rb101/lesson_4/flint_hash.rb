@@ -25,7 +25,9 @@ end
 p flint_hash
 
 # alt solution time: creating an array of letters, then using .count on 
-# the statement to populate it 
+# the statement to populate it .
+# this one is cool because it doesn't include spaces and the letters are in 
+# alphabetical order. 
 result = {}
 letters = ('A'..'Z').to_a + ('a'..'z').to_a
 

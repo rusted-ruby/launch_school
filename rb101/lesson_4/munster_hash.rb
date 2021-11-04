@@ -30,6 +30,7 @@ munsters = {
   "Marilyn" => { "age" => 23, "gender" => "female"}
 }
 
+#NOTE: you don't need the .include? method in the condition of the when arms of the case. 
 munsters.each_pair do |k, v| 
   age = v["age"]
   case age
