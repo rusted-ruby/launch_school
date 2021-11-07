@@ -1,6 +1,7 @@
 class Person
   attr_writer :secret
 
+  #can have self.secret or secret here. 
   def share_secret
     puts "#{self.secret}"
   end

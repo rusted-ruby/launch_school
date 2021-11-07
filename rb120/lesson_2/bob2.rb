@@ -18,3 +18,7 @@ p bob.first_name            # => 'Robert'
 p bob.last_name             # => ''
 p bob.last_name = 'Smith'
 p bob.name                  # => 'Robert Smith'
+
+# could also have done this just by setting first and last name in the initialize method.
+# then define a name method to output the first and last name.
+# we don't even really need an instance variable for name at all. 
