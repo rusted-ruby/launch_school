@@ -10,7 +10,7 @@ class FixedArray
   # if we used a mutating method on the result of this array, we'd change the value
   # of the array object in our array instance variable. Probably not a great choice. 
   def to_a
-    array
+    array.clone
   end
 
   # could also have used self[index] to validate the error. 
