@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>your page title goes here</title>
+    <meta charset="utf-8" />
+    <style>
+    </style>
+  </head>
+  <body>
+    <form action="#" method="post">
+      <fieldset>
+        <dl>
+          <dt>
+            <label for="firstName">First name</label>
+          </dt>
+          <dd>
+            <input type="text" required name="firstName" id="firstName"/>
+          </dd>
+          <dt>  
+            <label for="lastName">Last name</label>
+          </dt>
+          <dd>
+            <input type="text" required name="lastName" id="lastName"/>
+          </dd>
+          <dt>
+            <label for="email">Email</label>
+          </dt>
+          <dd>
+            <input type="email" required name="email" id="email"
+                  autocomplete="off" autocorrect="off"
+                  autocapitalize="none" />
+          </dd>
+          <dt> 
+            <label for="phone">Phone number</label>
+          </dt>
+          <dd>
+            <input type="tel" placeholder="###-###-####" required name="phone" id="phone"/>
+          </dd>
+          <dt><label for="phoneType">Phone Type</label></dt>
+          <dd>
+            <select name="phoneType" id="phoneType">
+              <option value="home" selected>Home</option>
+              <option value="cell">Cell</option>
+              <option value="office">Office</option>
+            </select>
+          </dd>
+          <dt><label for="message">Message</label></dt>
+          <dd>
+            <textarea name="message" id="message" rows="6" 
+                      cols="80" placeholder="Type your message here"></textarea>
+          </dd>
+        </dl>
+        <input type="submit" value="Send"/>
+      </fieldset>
+    </form>
+  </body>
+</html>
