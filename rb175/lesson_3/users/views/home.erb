@@ -1,0 +1,19 @@
+<div class="header">
+  <h2>All our users</h2>
+  <p>Take a look around</p>
+</div>
+
+<div class="pure-menu">
+  <ul class="pure-menu-list">
+    <% @allUserInfo.each do |userName, _| %>
+      <%userName = userName.to_s%>
+      <li class="pure-menu-item">
+        <a 
+        href=<%= "/user/#{userName}"%> 
+        class="pure-menu-link">
+        <%= userName %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

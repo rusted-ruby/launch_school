@@ -1,0 +1,36 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>">
+  <button type="submit">Search</button>
+</form>
+
+<% if (@searchTerm != "") && @searchResults != [] %>
+  <div>
+    <h2 class="content-subhead">Results for '<%= @searchTerm%>'>
+    <% @titleSearchResults.each do |result| %>
+      <% chapterTitle = result[0]%>
+      <% chapterNum = result[1] %>
+      <div>
+      <ul>
+      <li>
+        <a href=<%= "/chapters#{chapterNum}" %>> <%=chapterTitle%></a>
+        <!--iterate through the array for this chapter that contains nested arrays of format 
+        [paragraph contents, paragraph ID]-->
+        <% @paragraphSearchResults[chapterNum].each do |paragraphResult|%>
+          <% paragraph = paragraphResult[0] %>
+          <% paragraphID = paragraphResult[1] %>
+          <ul>
+          <li>
+            <a href=<%= "/chapters/#{chapterNum}##{paragraphID}" %>> <%= formatParagraph(paragraph) %></a>
+          </li>
+          </ul>
+        <% end %>
+      </li>
+      </ul>
+      </div>
+    <% end %>
+  </div>
+<% elsif @searchResults == [] && @searchTerm != nil %>
+  <p>Sorry, no matches were found </p>
+<% end %>

@@ -1,0 +1,36 @@
+<div class="header">
+  <h2><%="Welcome to #{@name.to_s}'s page"%></h2>
+  <p>Take a look around</p>
+</div>
+
+<div class="pure-menu">
+  <ul class="pure-menu-list">
+    <li class = "pure-menu-item">
+      <%="User email: #{@userHash[:email]}"%>
+      <li class = "pure-menu-item">
+        <p><%="#{@name.to_s}'s interests"%></p>
+        <ul class = "pure-menu-list">
+          <% @userHash[:interests].each do |interest| %>
+            <li class="pure-menu-item">
+              <p><%="#{interest}"%></p>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <h3>Other users</h3>
+  <div class = "pure-menu">
+    <ul class = "pure-menu-list">
+      <% @allUserInfo.each do |userName, _|%>
+        <li>
+          <% userName = userName.to_s %>
+          <a href = <%="#{userName}"%>><%=userName%></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
