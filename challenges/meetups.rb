@@ -61,14 +61,17 @@ class Meetup
     test_month = @month
     day = process_day(day)
     desc = desc.downcase
+    # this hash will hold all the days we're interested in. if Monday is our day, the "first"
+    # key will have the first Monday of the month, the "second" key will have the second 
+    # Monday of the month, etc. then at the end we just index into this to get the date we want.
     date_hash = {
       "first" => nil, "second" => nil, "third" => nil, "fourth" => nil, "fifth" => nil,
       "last" => nil, "teenth" => nil
     }
     while test_month == @month
       # create a method to call against our date object to see if the date is the day we want
-      # these will be the Date#monday? and Date#tuesday? type methods
-      # go on to the next date if this isn't the one we're interested in.
+      # these will be the Date#monday? and Date#tuesday? type methods.
+      # go on to the next date if this isn't a day we're interested in.
       day_checker = test_date.method(day)
       if !day_checker.call
         test_date = test_date.next_day
@@ -105,3 +108,24 @@ class Meetup
     day.to_sym
   end
 end
+
+=begin
+I like what I did here... but how did LS do it?
+created a schedule_start_day hash with keys of the descriptions and values being the
+first day of each month that could be considered that day. So "first"s value is 1, 
+"second"s value is 8, "third"s value is 15, etc. last starts off with a nil value.
+next, get the max days in the month using Date.civil with -1 as the day.
+Then, get the first possible day by indexing into the array with the passed in description, 
+OR the 6th day before the last day in the month
+Then, get the last possible day by choosing the lesser of the first day + 6 and the max days
+in the month
+
+then we use the detect method, which returns the first element where the block is truthy
+we create a new date object for each day between the first possible and last possible days.
+use a big case statement to check if the date is the day of the week we're interested in.
+Return it if we find it. 
+
+So they've got a good thing going in that they only search once, and look over a max of 
+one week's worth of days. Even the "last" case will start at max days - 6 because its 
+numeric hash value is nil. 
+=end
