@@ -79,3 +79,8 @@ console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.
 
 // logs:
 //Teachers open the door, but you must enter by yourself.
+
+//what did LS do? They had a really slick way of doing the looping: they did 
+//(normal index + 13) % 26. But their normal index is one less than mine is. So in theirs, 
+//a is 0 instead of 1. That's a slicker way of doing it because you don't need to account for
+//the z case. 
