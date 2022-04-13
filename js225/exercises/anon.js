@@ -56,7 +56,8 @@ let Account = (function(){
     return str
   }
 
-  //actually return the object to be used as a prototype
+  //actually return the object to be used as a prototype. Note that we don't use 'this' the 
+  //same way we do in constructor functions. 
   return {
     init(email, password, firstName, lastName){
       userEmail = email;
@@ -100,8 +101,6 @@ let Account = (function(){
   }
 
 });
-
-
 
 let fooBar = Object.create(Account()).init('foo@bar.com', '123456', 'foo', 'bar');
 console.log(fooBar.firstName);                     // returns the firstName function

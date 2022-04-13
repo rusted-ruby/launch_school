@@ -29,6 +29,7 @@ Person.prototype.eat = function(){
 Person.prototype.sleep = function(){
   console.log("Sleeping");
 }
+
 function Doctor(firstName, lastName, age, gender, specialization) {
   Person.call(this, firstName, lastName, age, gender)
   this.specialization = specialization
@@ -38,6 +39,7 @@ Doctor.prototype.diagnose = function(){
   console.log("Diagnosing");
 }
 Doctor.prototype.constructor = Doctor;
+
 function Student(firstName, lastName, age, gender, degree) {
   Person.call(this, firstName, lastName, age, gender)
   this.degree = degree;
@@ -47,6 +49,7 @@ Student.prototype.study = function(){
   console.log("Studying");
 }
 Student.prototype.constructor = Student;
+
 function GraduateStudent(firstName, lastName, age, gender, degree, graduateDegree){
   Student.call(this, firstName, lastName, age, gender, degree)
   this.graduateDegree = graduateDegree;
