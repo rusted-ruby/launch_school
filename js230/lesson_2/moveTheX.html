@@ -1,0 +1,33 @@
+<div class="x">
+  <div class="horizontal"></div>
+  <div class="vertical"></div>
+  <script>
+    console.log('in the script')
+    document.addEventListener('DOMContentLoaded', event => {
+      console.log('dom loaded')
+      let x = document.querySelector('.x');
+      document.addEventListener('mousemove', event => {
+        let xPos = event.clientX
+        let yPos = event.clientY
+        x.style.left = String(xPos) + 'px'
+        x.style.top = String(yPos) + 'px'
+      });
+      document.addEventListener('keyup', event => {
+        let color;
+        if (event.key === 'b') {
+          color = 'blue'
+        } else if (event.key === 'g') {
+          color = 'green'
+        } else if (event.key === 'r') {
+          color = 'red'
+        }
+        if (color) {
+          for (let i = 0; i < x.children.length; i += 1) {
+            let child = x.children[i]
+            child.style.background = color;
+          }
+        }
+      })
+    });
+  </script>
+</div> 
