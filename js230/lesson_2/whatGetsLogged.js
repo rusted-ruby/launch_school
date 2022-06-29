@@ -15,6 +15,20 @@ promise
     return num + 4;
   })
   .finally((num) => {
-    console.log(num); //10
+    console.log(num); //10 => nope, undefined
     return num + 5;
   });
+
+  const promise = new Promise((resolve, reject) => {
+    resolve("Got it!");
+    reject("Oops.");
+    resolve("Again!");
+  });
+  
+  promise
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });

@@ -1,0 +1,21 @@
+<div class="composer">
+  <textarea placeholder="Enter your message"></textarea>
+  <p class="counter"></p>
+  <button type="submit">Post Message</button>
+  <script>
+    const charCount = 140;
+    document.addEventListener("DOMContentLoaded", event => {
+      let textarea = document.querySelector('textarea');
+      let counter = document.querySelector('p');
+      textarea.addEventListener('keyup', event => {
+        let text = textarea.value.split('');
+        counter.textContent = `${charCount - text.length} characters remaining`
+        if (text.length > charCount) {
+          textarea.classList.add('invalid')
+        } else {
+          textarea.classList.remove('invalid')
+        }
+      })
+    })
+  </script>
+</div>

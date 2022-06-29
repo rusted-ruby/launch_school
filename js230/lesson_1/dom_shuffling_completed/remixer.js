@@ -1,34 +1,26 @@
-console.log('pointing to the right place');
+console.log("we are running the script");
 
-//put the header links on top
-let headers = document.querySelectorAll('header');
-let mySiteHeaderLinks = headers[1];
-let target = document.querySelector('main');
-document.body.insertBefore(mySiteHeaderLinks, target);
+//images for baby mop and chin stick need to be swapped
+let imgs = document.querySelectorAll('img');
+let babyImg = imgs[0];
+let stickImg = imgs[1];
+let figs = document.querySelectorAll('figure');
+let babyFig = figs[1];
+let stickFig = figs[0];
+babyFig.replaceChild(babyImg, stickImg);
+stickFig.insertAdjacentElement('afterbegin', stickImg);
 
-//put the mySite header inside the element with the links
-let mySite = document.querySelector('h1');
-mySiteHeaderLinks.insertAdjacentElement('afterbegin', mySite)
-
-//move the images to be within the article element.
+//insert images into the article element
 let article = document.querySelector('article');
-let figures = document.querySelectorAll('figure');
-for (i = 0; i < figures.length; i += 1) {
-  let figure = figures[i]
-  article.appendChild(figure)
-}
+article.insertAdjacentElement('beforeend', stickFig);
+article.insertAdjacentElement('beforeend', babyFig);
 
-//swap the images so they're matched up with their captions. 
-let babyMop = figures[0].querySelector('img');
-let chinStick = figures[1].querySelector('img');
-figures[0].replaceChild(chinStick, babyMop);
-figures[1].insertAdjacentElement('afterbegin',babyMop)
+//My Site! h1 needs to be in the same header element as the links
+let h1  =document.querySelector('h1');
+let headers = document.querySelectorAll('header');
+headers[1].insertAdjacentElement('afterbegin', h1);
 
-/*
-What did LS do?
-pretty similar to what I did. Key pieces are that they use insertbefore(img, null)... my guess 
-is that this puts the new element first in the parent element. 
+//home, about and contact links need to be above site description
+let body = document.querySelector('body')
+body.insertAdjacentElement('afterbegin', headers[1]);
 
-They also use some cool css selector syntax with body > header and main > h1... that would be 
-good to know. 
-*/

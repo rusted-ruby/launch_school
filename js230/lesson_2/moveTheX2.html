@@ -1,0 +1,34 @@
+<div class="x">
+  <div class="horizontal"></div>
+  <div class="vertical"></div>
+  <script>
+    console.log("in the script");
+    document.addEventListener("DOMContentLoaded", event => {
+      let x = document.querySelector('.x');
+      document.addEventListener('mousemove', clickEvent => {
+        let xClick = clickEvent.clientX;
+        let yClick = clickEvent.clientY;
+        x.style.top = String(yClick) + 'px';
+        x.style.left = String(xClick) + 'px';
+      })
+      document.addEventListener('keydown', event => {
+        console.log('key down');
+        console.log(event.key)
+        let color;
+        if (event.key === 'b') {
+          color = 'blue';
+        } else if (event.key === 'r') {
+          color = 'red';
+        } else if (event.key === 'g') {
+          color = 'green'
+        }
+        if (color) {
+          let xChild = x.children;
+          for (let i = 0; i < xChild.length; i += 1) {
+            xChild[i].style.background = color;
+          }
+        }
+      })
+    })
+  </script>
+</div> 
