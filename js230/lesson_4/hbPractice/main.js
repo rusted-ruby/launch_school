@@ -23,4 +23,4 @@ let posts = {
   ]
 };
 
-$('body').append(postTemplate(posts));
+$('main').append(postTemplate(posts));
