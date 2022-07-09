@@ -1,0 +1,32 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="./javascripts/newScheduleForm.js"></script>
+  <body>
+    <button id="addSchedules">Add More Schedules</button>
+    <div id="allNewScheduleForms"></div>
+    <button id="submitSchedules">Submit</button>
+  </body>
+</head>
+
+<script id="dropdown" type="text/x-handlebars">
+  <option value="{{this.name}}">{{this.name}}</option>
+</script>
+
+<script id="scheduleForm" type="text/x-handlebars">
+  <form id={{id}} name="newSchedule">
+    <label>Staff Member: 
+      <select data-type="staffMember" name="staffName">
+        {{#each staff}}
+        {{>dropdown}}
+        {{/each}}
+      </select>
+    </label>
+    <label>Date:
+      <input data-type="date" name="date">
+    </label>
+    <label>Time:
+      <input data-type="time" name="time">
+    </label>
+  </form>
+</script>

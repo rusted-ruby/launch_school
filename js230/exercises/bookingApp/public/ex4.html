@@ -1,0 +1,42 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="./javascripts/bookingTimeSlots.js"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>SCHEDULES</h1>
+  <form id="bookingForm" name="bookingForm">
+    <label>Email:
+      <input id="bookingEmail" name="student_email" type="text">
+    </label>
+    <button id="newScheduleButton">Submit</button>
+  </form>
+  <form id='newStudentForm' name="newStudentForm" class="hidden">
+    <h1>PLEASE PROVIDE NEW STUDENT DETAILS</h1>
+    <label>Email:
+      <input name="email" id="newStudentEmail" type="text">
+    </label>
+    <label>Booking Sequence:
+      <input name="booking_sequence" id="newStudentBookingSeq" type="text">
+    </label>
+    <label>Name:
+      <input name="name" id="newStudentName" type="text">
+    </label>
+    <button id="newStudentButton" >Submit</button>
+  </form>
+
+</body>
+
+<script id="scheduleDropdown" type="text/x-handlebars">
+  <label>Schedules: 
+    <select name="id" id="bookingScheduleSelect">
+      {{#each schedules}}
+      <option value="{{this.id}}">{{this.staff_name}} | {{this.date}} | {{this.time}}</option>
+      {{/each}}
+    </select>
+  </label>
+</script>
