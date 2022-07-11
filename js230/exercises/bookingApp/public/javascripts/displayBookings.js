@@ -7,13 +7,10 @@
 
   High level things that we'll need to do:
     query dates that have booked schedules
-    displaye that information in the page
+    display that information in the page
     handle click events
       for each click event, get the date. query the bookings
       with details for a given date
-
-  Before I do anything with the xhr, I want to make sure that 
-  I handle setting up the page correctly. 
 */
 let dateList;
 
@@ -65,8 +62,8 @@ function getBookingsForDate(dateStr) {
     let url = `http://localhost:3000/api/bookings/${encodeURIComponent(dateStr)}`;
     console.log('making a get req to ', url);
     req.open('GET', url);
-    req.setRequestHeader("Content-Type", 'application/json; charset=utf-8');
-    let jsonData = JSON.stringify({date: dateStr})
+    //req.setRequestHeader("Content-Type", 'application/json; charset=utf-8');
+    //let jsonData = JSON.stringify({date: dateStr})
     req.addEventListener('load', event => {
       if (req.status === 200) {
         //debugger
@@ -75,7 +72,7 @@ function getBookingsForDate(dateStr) {
         reject('unable to find bookings for provided date');
       }
     })
-    req.send(jsonData)
+    req.send()
   })
 }
 
@@ -92,4 +89,10 @@ function addDetailsToPage(dateEle, details) {
 
 /*
   Next up: see what LS did for this.
+    Again, they have manual code that creates the html page... kinda gross
+    One thing they do is check to see if a date has child elements with a childElementCount
+    property. Then they only fire the xhr request if there are no children, that's an
+    improvement.
+
+    Other than that, pretty straightforward. 
 */
